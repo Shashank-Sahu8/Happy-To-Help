@@ -44,95 +44,97 @@ class _TeamListScreenState extends State<TeamListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white60,
-      body: Stack(
-        children: [
-          Column(mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: CircleAvatar(backgroundImage: AssetImage("assets/logo.jpeg")),
-                  )
-                ],
-              )
-            ],
-          ),
-          Column(
-            children: [SizedBox(height: 5,),
-              Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Basketball Teams',style: GoogleFonts.brunoAceSc(
-                      color: Colors.black,
-                      fontSize: 27,
-                      fontWeight: FontWeight.w900),),
-                ],
-              ),
-              SizedBox(height: 10,),
-              Expanded(
-                child: Stack(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Column(mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Container(
-                        height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,
-                       decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight:Radius.circular(40) ) ,color: Color(0xff0076FF),),
-                        child: Image(image:  AssetImage("assets/ball.png"),fit: BoxFit.cover,),
-                      ),
-                    ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: ValueListenableBuilder(
-                        valueListenable: teamBox.listenable(),
-                        builder: (context, Box<Team> box, _) {
-                          if (box.values.isEmpty) {
-                            return Center(child: Text('No teams available.'));
-                          }
-                          return ListView.builder(
-                            itemCount: box.length,
-                            itemBuilder: (context, index) {
-                              final team = box.getAt(index);
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: InkWell(
-                                  splashColor: Colors.blueGrey,
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayerCardScreen(team: team)));
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(color:Color(0xff146cdc),
-                                      boxShadow: [BoxShadow(color: Colors.blueGrey,
-                                      spreadRadius: 0.1,
-                                      blurRadius: 1,
-                                      offset: Offset(0.2 ,0.3), )],
-                                        borderRadius: BorderRadius.all(Radius.circular(15)) ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15.0),
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.arrow_circle_right_outlined,color: Colors.black,),
-                                          SizedBox(width: 14,),
-
-                                          Text(team!.name,style: GoogleFonts.inter(fontWeight: FontWeight.w600,fontSize: 20),),
-                                        ],
+                      padding: const EdgeInsets.all(10.0),
+                      child: CircleAvatar(backgroundImage: AssetImage("assets/logo.jpeg")),
+                    )
+                  ],
+                )
+              ],
+            ),
+            Column(
+              children: [SizedBox(height: 15,),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Basketball Teams',style: GoogleFonts.brunoAceSc(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w900),),
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Expanded(
+                  child: Stack(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,
+                         decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight:Radius.circular(40) ) ,color: Color(0xff0076FF),),
+                          child: Image(image:  AssetImage("assets/ball.png"),fit: BoxFit.cover,),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: ValueListenableBuilder(
+                          valueListenable: teamBox.listenable(),
+                          builder: (context, Box<Team> box, _) {
+                            if (box.values.isEmpty) {
+                              return Center(child: Text('No teams available.'));
+                            }
+                            return ListView.builder(
+                              itemCount: box.length,
+                              itemBuilder: (context, index) {
+                                final team = box.getAt(index);
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: InkWell(
+                                    splashColor: Colors.blueGrey,
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PlayerCardScreen(team: team)));
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(color:Color(0xff146cdc),
+                                        boxShadow: [BoxShadow(color: Colors.blueGrey,
+                                        spreadRadius: 0.1,
+                                        blurRadius: 1,
+                                        offset: Offset(0.2 ,0.3), )],
+                                          borderRadius: BorderRadius.all(Radius.circular(15)) ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.arrow_circle_right_outlined,color: Colors.black,),
+                                            SizedBox(width: 14,),
+        
+                                            Text(team!.name,style: GoogleFonts.inter(fontWeight: FontWeight.w600,fontSize: 20),),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              );
-
-                            },
-                          );
-                        },
+                                );
+        
+                              },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-
-                  ],
+        
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showDialog(
