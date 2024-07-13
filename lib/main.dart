@@ -99,9 +99,9 @@ void addDefaultData(Box<Team> teamBox) {
         reboundsPerGame: 7.0 ,
       ),
     ]),
-    Team(name: 'yello', players: List.generate(10, (index) => Player(
+    Team(name: 'Titans', players: List.generate(10, (index) => Player(
       name: 'Player ${index + 1}',
-      image: 'https://via.placeholder.com/150',
+      image: 'https://media.istockphoto.com/id/452219253/vector/caucasian-basketball-player.jpg?s=612x612&w=0&k=20&c=k2uGWposeUVbPoEUzU1V-EzFufpzlCr8kLmTLxkhq6w=',
       position: 'Position ${index + 11}',
       pointsPerGame: 12.0 + index,
       assistsPerGame: 6.0 + index,

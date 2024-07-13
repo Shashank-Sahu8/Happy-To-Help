@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddTeamDialog extends StatelessWidget {
   final Function(String) onAdd;
@@ -10,7 +11,10 @@ class AddTeamDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Add Team'),
+      alignment:Alignment.topCenter,
+      backgroundColor: Colors.white,
+      shape:RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))),
+      title: Text('Add Team',style: GoogleFonts.inter(fontWeight: FontWeight.w700),),
       content: TextField(
         controller: _controller,
         decoration: InputDecoration(hintText: 'Team Name'),
@@ -20,7 +24,7 @@ class AddTeamDialog extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('Cancel'),
+          child: Text('Cancel',style: GoogleFonts.inter(color:  Color(0xff0076FF),fontWeight: FontWeight.w600)),
         ),
         TextButton(
           onPressed: () {
@@ -30,7 +34,7 @@ class AddTeamDialog extends StatelessWidget {
               Navigator.of(context).pop();
             }
           },
-          child: Text('Add'),
+          child: Text('Add',style: GoogleFonts.inter(color:  Color(0xff0076FF),fontWeight: FontWeight.w600),),
         ),
       ],
     );
