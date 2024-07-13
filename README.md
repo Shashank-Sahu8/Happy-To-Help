@@ -6,7 +6,7 @@ A PlayerCardScreen component that displays information about a basketball player
 
 The project is deployed on Vercel. You can access it here:
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-blue?logo=vercel)](https://your-project-name.vercel.app)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-blue?logo=vercel)](https://web-pi-woad.vercel.app/) -> https://web-pi-woad.vercel.app/
 
 UI Screens
 
